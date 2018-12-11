@@ -99,7 +99,7 @@
                 </div>
                 <!-- /.row -->
 <div class="col-lg-6">
-                        <h2>Bordered with Striped Rows</h2>
+                       <h2>Bordered with Striped Rows</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>

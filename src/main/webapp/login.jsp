@@ -4,7 +4,7 @@
     String password = request.getParameter("password");
     Class.forName("org.postgresql.Driver");
     Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ilovepet",
-            "postgres", "12345");
+            "postgres", "postgres");
     Statement st = con.createStatement();
     ResultSet rs;
     rs = st.executeQuery("select * from users where username ='" + username + "' and password='" +password + "'");

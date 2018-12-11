@@ -5,14 +5,16 @@ package jpa;
   import javax.persistence.EntityManager;
   import javax.persistence.EntityManagerFactory;
   import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
+import org.hibernate.sql.ordering.antlr.Factory;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
    
   public class PetDao {
    
            private static PetDao instance;
            
-           private EntityManagerFactory factory = Persistence.createEntityManagerFactory("pet");
+           private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("pet");
            
            public static PetDao getInstance(){
                      if (instance == null){
@@ -79,6 +81,17 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
                               System.out.println("Não foi possível remover do banco.");
                      }
                      entityManager.close();
+           }
+           
+           public static List<Pet> listar(){
+        	   EntityManager entityManager = factory.createEntityManager();
+        	   
+        	   String jpql = "from Pet";
+        	   TypedQuery<Pet> query = entityManager.createQuery(jpql, Pet.class);
+        	   List<Pet> result = query.getResultList();
+               entityManager.close();
+               
+        	   return result;
            }
   
   }
